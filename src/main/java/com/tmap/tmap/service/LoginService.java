@@ -6,6 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class LoginService {
@@ -14,19 +17,26 @@ public class LoginService {
 
 
     @Transactional
-    public String findByIdAndPw(ApUser form){
+    public Map<String , String> findByIdAndPw(ApUser form){
+
+        Map<String , String> res = new HashMap<>();
         ApUser user = sql.selectOne("com.tmap.tmap.mapper.AppUserMapper.findById",form);
 
         if(user == null){
-            return "anonymous";
+            res.put("res" , "anonymous");
+            return res;
         }
 
         ApUser pwCheck = sql.selectOne("com.tmap.tmap.mapper.AppUserMapper.findByIdAndPw",form);
 
         if(pwCheck == null){
-            return "wrongPw";
+            res.put("res" , "wrongPw");
+            return res;
         }else{
-            return pwCheck.getUserCode();
+            res.put("res" , pwCheck.getUserCode());
+            res.put("departure" , pwCheck.getSubAddr1());
+            res.put("destination" , pwCheck.getHomeAddr1());
+            return res;
         }
 
     }

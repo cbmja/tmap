@@ -44,6 +44,13 @@ body{/*전체 영역*/
     align-items: center;
 }
 
+.column-s-c{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .column-sb-c{
     display: flex;
     flex-direction: column;

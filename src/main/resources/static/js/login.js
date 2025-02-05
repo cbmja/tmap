@@ -19,7 +19,7 @@ $(document).on('click', '#login-btn', function(){
         data: JSON.stringify({userId: id , userPw :pw}),
         success: function(response) {
 
-            switch (response){
+            switch (response['res']){
 
                 case '404': alert('아이디 / 비밀번호를 다시 입력해 주세요.'); break;
 
@@ -29,7 +29,7 @@ $(document).on('click', '#login-btn', function(){
 
                 case 'err': alert('서버 오류입니다.'); break;
 
-                case 'login': alert('로그인 성공.'); break;
+                case 'login': window.location.href='/tmap/map?departure='+response['departure']+'&destination='+response['destination']; break;
 
             }
 
