@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+    <div class="login-ar column-c-c">
+
+        <!-- 로그인 폼 -->
+        <div class="login-form column-sb-c">
+            <div></div>
+            <input type="text" id="login-id" placeholder="ID" class="login-input">
+            <div></div>
+            <input type="password" id="login-pw" placeholder="PW" class="login-input">
+            <div></div>
+        </div>
+
+        <div style="height: 10px;"></div>
+        <!-- 로그인 버튼 -->
+        <span class="login-btn center" id="login-btn">로그인</span>
+
+        <div style="height: 10px;"></div>
+        <!-- 계정찾기 / 회원가입 -->
+        <div class="row-s-c" style="width: 80%;">
+            <span class="find-account">아이디 찾기</span>
+            <div style="width: 20px;"></div>
+            <span class="find-account">비밀번호 찾기</span>
+
+            <span class="create-account">회원가입</span>
+        </div>
+
+        <div style="height: 50px;"></div>
+
+        <div class="social-login column-sb-c">
+
+            <div class="quick-login row-s-c">
+                <hr style="width: calc(50% - 60px); border: 0; height: 1px; background:#BCBCBC;">
+                <span class="center">
+                    간편 로그인
+                </span>
+                <hr style="width: calc(50% - 60px); border: 0; height: 1px; background:#BCBCBC;">
+            </div>
+            <div style="height: 20px;"></div>
+
+            <div style="width: 100%;" class="row-sb-c">
+
+                <div class="social-btn center" style="background-color: #fee500; color: #000000 !important;">kakao</div>
+                <div class="social-btn center" style="background-color: #03cf5d;">naver</div>
+                <div class="social-btn center" style="background-color: #1d1d1b;">google</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <script th:src="@{/js/login.js}"></script>
+</div>
+</html>

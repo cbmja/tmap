@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: tmap
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+  mvc:
+    view:
+      suffix: .html
+
+  # ???
+  datasource:
+    url: jdbc:mysql://localhost:3306/tmap?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 600000
+      leak-detection-threshold: 6000
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.tmap.tmap.dto
+  configuration:
+    map-underscore-to-camel-case: true
