@@ -67,7 +67,17 @@ $(document).on('click', '.addr-btn', function(){
                     }
                 }
 
-                alert(`위도 : ${latEntr} / 경도 : ${lonEntr}`);
+                if(type === 'departure'){
+                    //출발지
+                    $('#departure-x').val(lonEntr);
+                    $('#departure-y').val(latEntr);
+                }else{
+                    //도착지
+                    $('#destination-x').val(lonEntr);
+                    $('#destination-y').val(latEntr);
+                }
+
+                alert(`위도y : ${latEntr} / 경도x : ${lonEntr}`);
             }
         },
         error : function(request, status, error) {
