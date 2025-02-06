@@ -139,6 +139,8 @@ $(document).on('click', '.addr-btn', function(){
                 removeMarker(type);
                 addMarker(type , latEntr , lonEntr);
 
+                map.setCenter(new Tmapv3.LatLng(latEntr, lonEntr)); // 지도의 중심 위치 변경
+
 
             }
         },
