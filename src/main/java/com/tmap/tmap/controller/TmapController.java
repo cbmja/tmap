@@ -87,7 +87,7 @@ public class TmapController {
             e.printStackTrace();
         }finally {
             model.addAttribute("title","tmap");
-            return "map";
+            return "navi";
         }
 
     }

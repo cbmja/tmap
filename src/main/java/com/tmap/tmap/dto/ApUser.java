@@ -17,6 +17,13 @@ public class ApUser {
     private String homeAddr2;
     private String subAddr1;
     private String subAddr2;
-
+    private String home1LocX; // 경도
+    private String home1LocY; // 위도
+    private String home2LocX;
+    private String home2LocY;
+    private String sub1LocX;
+    private String sub1LocY;
+    private String sub2LocX;
+    private String sub2LocY;
 
 }

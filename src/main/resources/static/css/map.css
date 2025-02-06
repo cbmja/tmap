@@ -97,3 +97,48 @@
     font-style: normal;
 
 }
+
+.navi-btn{
+    width: 90%;
+    height: 50px;
+
+    background-color: #00C471;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    color: #FFFFFF;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+@media (hover:hover) {
+    .navi-btn:hover , .addr-btn:hover{
+        cursor: pointer;
+    }
+}
+
+
+.addr-btn{
+    width: 50px;
+    height: 50%;
+
+    background-color: #00C471;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    color: #FFFFFF;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
