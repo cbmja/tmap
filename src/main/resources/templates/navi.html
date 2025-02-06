@@ -46,8 +46,8 @@
         <input type="text" class="loc-form" style="width: calc(25% - 75px);" th:value="${departureAddrDetail}" placeholder="상세주소">
         <div class="addr-btn center" data-type="departure">입력</div>
 
-        <input type="hidden" id="departure-x"><!-- 경도 -->
-        <input type="hidden" id="departure-y"><!-- 위도 -->
+        <input type="hidden" id="departure-x" th:value="${departurex}"><!-- 경도 -->
+        <input type="hidden" id="departure-y" th:value="${departurey}"><!-- 위도 -->
     </div>
 
     <!----------------------------------------------------------->
@@ -68,8 +68,8 @@
         <input type="text" class="loc-form" style="width: calc(25% - 75px);" th:value="${destinationAddrDetail}" placeholder="상세주소">
         <div class="addr-btn center" data-type="destination">입력</div>
 
-        <input type="hidden" id="destination-x"><!-- 경도 -->
-        <input type="hidden" id="destination-y"><!-- 위도 -->
+        <input type="hidden" id="destination-x" th:value="${destinationx}"><!-- 경도 -->
+        <input type="hidden" id="destination-y" th:value="${destinationy}"><!-- 위도 -->
     </div>
 
 </div>

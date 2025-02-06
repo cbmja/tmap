@@ -36,6 +36,13 @@ public class LoginService {
             res.put("res" , pwCheck.getUserCode());
             res.put("departure" , pwCheck.getSubAddr1());
             res.put("destination" , pwCheck.getHomeAddr1());
+
+            res.put("destinationx" , pwCheck.getHome1LocX());
+            res.put("destinationy" , pwCheck.getHome1LocY());
+
+            res.put("departurex" , pwCheck.getSub1LocX());
+            res.put("departurey" , pwCheck.getSub1LocY());
+
             return res;
         }
 

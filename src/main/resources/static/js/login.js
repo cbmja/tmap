@@ -29,7 +29,9 @@ $(document).on('click', '#login-btn', function(){
 
                 case 'err': alert('서버 오류입니다.'); break;
 
-                case 'login': window.location.href='/tmap/map?departure='+response['departure']+'&destination='+response['destination']; break;
+                case 'login': window.location.href='/tmap/map?departure='+response['departure']+'&destination='+response['destination']
+                +'&destinationx='+response['destinationx']+'&destinationy='+response['destinationy']
+                +'&departurex='+response['departurex']+'&departurey='+response['departurey']; break;
 
             }
 

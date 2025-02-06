@@ -104,20 +104,41 @@ $(document).on('click', '.addr-btn', function(){
 var map;
 // 페이지가 로딩이 된 후 호출하는 함수입니다.
 function initTmap(){
+
+//출발지
+let departureX= $('#departure-x').val();
+let departureY= $('#departure-y').val();
+
+//도착지
+let destinationX= $('#destination-x').val();
+let destinationY= $('#destination-y').val();
+
+//console.log(`위도y : ${departureY} / 경도x : ${departureX}`);
     // map 생성
     // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
     map = new Tmapv3.Map("map_div", {
-        center : new Tmapv3.LatLng(37.56520450, 126.98702028),
+        center : new Tmapv3.LatLng(departureY, departureX),
         width : "90%",	// 지도의 넓이
         height : "500px",	// 지도의 높이
         zoom : 16	// 지도 줌레벨
     });
 };
 
+
 //경로안내 요청 함수
 function getRP() {
-    var s_latlng = new Tmapv3.LatLng (37.553756, 126.925356);
-    var e_latlng = new Tmapv3.LatLng (37.554034, 126.975598);
+
+    //출발지
+    let departureX= $('#departure-x').val();
+    let departureY= $('#departure-y').val();
+console.log(`위도y : ${departureY} / 경도x : ${departureX}`);
+
+    //도착지
+    let destinationX= $('#destination-x').val();
+    let destinationY= $('#destination-y').val();
+console.log(`위도y : ${destinationY} / 경도x : ${destinationX}`);
+    var s_latlng = new Tmapv3.LatLng (departureY, departureX);
+    var e_latlng = new Tmapv3.LatLng (destinationY, destinationX);
 
     var optionObj = {
         reqCoordType:"WGS84GEO", //요청 좌표계 옵셥 설정입니다.
@@ -156,8 +177,11 @@ function onComplete() {
         trafficType3Color:"#8E8111",  //정체
         trafficType4Color:"#FF0000"  //정체
     };
+
+        let departureX= $('#departure-x').val();
+        let departureY= $('#departure-y').val();
     jsonObject.drawRouteByTraffic(map, jsonForm, trafficColors);
-    map.setCenter(new Tmapv3.LatLng(37.55676159947993,126.94734232774672));
+    map.setCenter(new Tmapv3.LatLng(departureY,departureX));
     map.setZoom(13);
 }
 

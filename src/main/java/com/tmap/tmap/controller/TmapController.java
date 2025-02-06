@@ -107,6 +107,12 @@ public class TmapController {
         String destinationPostCode = destinationParts[1];
         String destinationAddrDetail = destinationParts[2];
 
+        model.addAttribute("destinationx" , loc.get("destinationx"));
+        model.addAttribute("destinationy" , loc.get("destinationy"));
+
+        model.addAttribute("departurex" , loc.get("departurex"));
+        model.addAttribute("departurey" , loc.get("departurey"));
+
         model.addAttribute("departureAddr" , departureAddr);
         model.addAttribute("departureAddrDetail" , departureAddrDetail);
         model.addAttribute("departurePostCode" , departurePostCode);
