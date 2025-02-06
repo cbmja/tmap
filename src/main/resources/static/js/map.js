@@ -228,7 +228,7 @@ function onComplete() {
         let departureY= $('#departure-y').val();
     jsonObject.drawRouteByTraffic(map, jsonForm, trafficColors);
     map.setCenter(new Tmapv3.LatLng(departureY,departureX));
-    map.setZoom(13);
+    map.setZoom(12);
 }
 
 //데이터 로드중 실행하는 함수입니다.
