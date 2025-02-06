@@ -69,6 +69,8 @@ function removeMarker(id) {
 
 $(document).on('click', '.addr-btn', function(){
 
+    removeRp();
+
     let type = $(this).data('type');
     console.log(type);
     let addr = $('#'+type+'-addr').val();
@@ -161,8 +163,16 @@ $(document).on('click', '.addr-btn', function(){
 
 /* ----------------------------------------------------------------- *//* ----------------------------------------------------------------- */
 
+function removeRp(){
+    map = null;
+    $('#map_div').empty();
+    initTmap();
+}
+
 //경로안내 요청 함수
 function getRP() {
+
+    removeRp();
 
     //출발지
     let departureX= $('#departure-x').val();
