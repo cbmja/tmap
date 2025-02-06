@@ -9,6 +9,63 @@
 //&goalname=집 목적지명
 
 
+var map;
+var markers = new Map(); // 현재 생성된 마커
+
+/* ----------------------------------------------------------------- *//* ----------------------------------------------------------------- */
+
+// 처음 화면이 로드될 때 실행.
+// 1. 지도 생성
+// 2. 출발지(회사)/도착지(집)에 마커 생성
+// 3. 지도의 중심 좌표는 출발지(회사)로 설정
+function initTmap(){
+
+//출발지
+let departureX= $('#departure-x').val();
+let departureY= $('#departure-y').val();
+
+//도착지
+let destinationX= $('#destination-x').val();
+let destinationY= $('#destination-y').val();
+
+//console.log(`위도y : ${departureY} / 경도x : ${departureX}`);
+    // map 생성
+    // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+    map = new Tmapv3.Map("map_div", {
+        center : new Tmapv3.LatLng(departureY, departureX),
+        width : "90%",	// 지도의 넓이
+        height : "500px",	// 지도의 높이
+        zoom : 16	// 지도 줌레벨
+    });
+
+    addMarker("departure",departureY, departureX);
+    addMarker("destination",destinationY, destinationX);
+
+};
+
+/* ----------------------------------------------------------------- *//* ----------------------------------------------------------------- */
+// 마커 생성
+function addMarker(id,lat, lng) {
+    var marker = new Tmapv3.Marker({
+        position: new Tmapv3.LatLng(lat, lng),
+        map: map
+    });
+    markers.set(id , marker); // 마커 배열에 저장
+}
+
+// 마커 삭제
+function removeMarker(id) {
+    if (markers.has(id)) {
+        markers.get(id).setMap(null); // 지도에서 제거
+        markers.delete(id); // Map에서 삭제
+    }
+}
+
+/* ----------------------------------------------------------------- *//* ----------------------------------------------------------------- */
+
+// 주소를 직접 입력하여 출발지/도착지 설정
+// 1. 출발지/도착지 변경 시 마커를 지우고 다시 생성
+// 2. 화면은 변경된 마커로 이동
 
 $(document).on('click', '.addr-btn', function(){
 
@@ -78,6 +135,11 @@ $(document).on('click', '.addr-btn', function(){
                 }
 
                 alert(`위도y : ${latEntr} / 경도x : ${lonEntr}`);
+
+                removeMarker(type);
+                addMarker(type , latEntr , lonEntr);
+
+
             }
         },
         error : function(request, status, error) {
@@ -97,32 +159,11 @@ $(document).on('click', '.addr-btn', function(){
 
 
 
-/**/
 
 
 
-var map;
-// 페이지가 로딩이 된 후 호출하는 함수입니다.
-function initTmap(){
 
-//출발지
-let departureX= $('#departure-x').val();
-let departureY= $('#departure-y').val();
 
-//도착지
-let destinationX= $('#destination-x').val();
-let destinationY= $('#destination-y').val();
-
-//console.log(`위도y : ${departureY} / 경도x : ${departureX}`);
-    // map 생성
-    // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-    map = new Tmapv3.Map("map_div", {
-        center : new Tmapv3.LatLng(departureY, departureX),
-        width : "90%",	// 지도의 넓이
-        height : "500px",	// 지도의 높이
-        zoom : 16	// 지도 줌레벨
-    });
-};
 
 
 //경로안내 요청 함수
