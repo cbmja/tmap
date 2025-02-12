@@ -38,16 +38,28 @@ let destinationY= $('#destination-y').val();
         zoom : 16	// 지도 줌레벨
     });
 
-    addMarker("departure",departureY, departureX);
-    addMarker("destination",destinationY, destinationX);
+    addMarker("departure",departureY, departureX, 'start');
+    addMarker("destination",destinationY, destinationX, 'end');
 
 };
 
 /* ----------------------------------------------------------------- *//* ----------------------------------------------------------------- */
 // 마커 생성
-function addMarker(id,lat, lng) {
+function addMarker(id,lat, lng, type) {
+
+    let iconPath = '';
+
+    switch (type){
+        case 'start': iconPath = "/icon/marker/1.png"; break;
+        case 'end': iconPath = "/icon/marker/2.png"; break;
+        case 'cafe': iconPath = "/icon/marker/3.png"; break;
+        case 'market': iconPath = "/icon/marker/4.png"; break;
+        case 'restaurant': iconPath = "/icon/marker/5.png"; break;
+    }
+
     var marker = new Tmapv3.Marker({
         position: new Tmapv3.LatLng(lat, lng),
+        icon: iconPath,
         map: map
     });
     markers.set(id , marker); // 마커 배열에 저장
@@ -125,13 +137,15 @@ $(document).on('click', '.addr-btn', function(){
                         latEntr = resultCoordinate.newLatEntr;
                     }
                 }
-
+                let markerType = '';
                 if(type === 'departure'){
                     //출발지
+                    markerType = 'start';
                     $('#departure-x').val(lonEntr);
                     $('#departure-y').val(latEntr);
                 }else{
                     //도착지
+                    markerType = 'end';
                     $('#destination-x').val(lonEntr);
                     $('#destination-y').val(latEntr);
                 }
@@ -139,7 +153,7 @@ $(document).on('click', '.addr-btn', function(){
                 alert(`위도y : ${latEntr} / 경도x : ${lonEntr}`);
 
                 removeMarker(type);
-                addMarker(type , latEntr , lonEntr);
+                addMarker(type , latEntr , lonEntr,markerType);
 
                 map.setCenter(new Tmapv3.LatLng(latEntr, lonEntr)); // 지도의 중심 위치 변경
 
@@ -244,14 +258,9 @@ function onComplete() {
             let list = response['list'];
 
             for(let i = 0; list.length; i++){
-                if(i === 0){
-                    console.log('for시작');
-                }
-                addMarker("store"+i,list[i].latitude, list[i].longitude);
 
-                if(i === 100){
-                    break;
-                }
+                addMarker("store"+i,list[i].latitude, list[i].longitude,list[i].businessCategoryNm);
+
             }
 
 
@@ -295,7 +304,7 @@ $(document).on('click', '#view-all-store', function(){
                     if(i === 0){
                         console.log('for시작');
                     }
-                    addMarker("store"+i,list[i].latitude, list[i].longitude);
+                    addMarker("store"+i,list[i].latitude, list[i].longitude,list[i].businessCategoryNm);
 
                     if(i === 100){
                         break;
