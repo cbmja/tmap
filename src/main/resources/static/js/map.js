@@ -50,11 +50,11 @@ function addMarker(id,lat, lng, type) {
     let iconPath = '';
 
     switch (type){
-        case 'start': iconPath = "/icon/marker/1.png"; break;
-        case 'end': iconPath = "/icon/marker/2.png"; break;
-        case 'cafe': iconPath = "/icon/marker/3.png"; break;
-        case 'market': iconPath = "/icon/marker/4.png"; break;
-        case 'restaurant': iconPath = "/icon/marker/5.png"; break;
+        case 'start': iconPath = "/icon/marker/blue.png"; break;
+        case 'end': iconPath = "/icon/marker/green.png"; break;
+        case 'cafe': iconPath = "/icon/marker/purple.png"; break;
+        case 'market': iconPath = "/icon/marker/red.png"; break;
+        case 'restaurant': iconPath = "/icon/marker/yellow.png"; break;
     }
 
     var marker = new Tmapv3.Marker({
