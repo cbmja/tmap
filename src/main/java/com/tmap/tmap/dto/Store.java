@@ -122,4 +122,6 @@ public class Store {
 
     // 위도
     private String latitude;
+
+    private String event;
 }
