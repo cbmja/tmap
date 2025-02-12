@@ -229,6 +229,41 @@ function onComplete() {
     jsonObject.drawRouteByTraffic(map, jsonForm, trafficColors);
     map.setCenter(new Tmapv3.LatLng(departureY,departureX));
     map.setZoom(12);
+
+    // 여기는 경로 근처 할인중 매장 표시
+    $.ajax({
+        url: '/tmap/store', // 서버 URL
+        method: 'GET',
+        success: function(response) {
+
+            if(response['res'] == 'err'){
+                alert('서버 오류입니다.');
+                return;
+            }
+
+            let list = response['list'];
+
+            for(let i = 0; list.length; i++){
+                if(i === 0){
+                    console.log('for시작');
+                }
+                addMarker("store"+i,list[i].latitude, list[i].longitude);
+
+                if(i === 100){
+                    break;
+                }
+            }
+
+
+            console.log(list[0]);
+            //console.log(list);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('서버 에러입니다. 잠시 후 다시 시도해주세요.');
+        }
+    });
+
 }
 
 //데이터 로드중 실행하는 함수입니다.

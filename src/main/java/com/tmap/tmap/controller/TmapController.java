@@ -131,7 +131,7 @@ public class TmapController {
 
             Map<String , Object> res = new HashMap<>();
         try{
-            List<Store> storeList = storeService.findAll();
+            List<Store> storeList = storeService.findDiscount();
 
             if(res.size() == 1){
                 if(storeList.get(0).getErr().equals("err")){

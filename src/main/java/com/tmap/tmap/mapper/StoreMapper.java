@@ -10,4 +10,6 @@ public interface StoreMapper {
 
     List<Store> findAll();
 
+    List<Store> findDiscount();
+
 }

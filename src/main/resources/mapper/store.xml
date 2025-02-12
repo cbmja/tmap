@@ -93,5 +93,11 @@
         FROM store;
     </select>
 
+    <select id="findDiscount" resultType="Store">
+        SELECT store_nm, business_category_num, business_category_nm, road_name_add, floor_info, longitude, latitude, event
+        FROM store
+        WHERE event = 'discount';
+    </select>
+
 
 </mapper>

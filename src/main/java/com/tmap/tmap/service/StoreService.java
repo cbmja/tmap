@@ -42,5 +42,20 @@ public class StoreService {
 
     }
 
+    public List<Store> findDiscount(){
+
+        try{
+            List<Store> storeList = sql.selectList("com.tmap.tmap.mapper.StoreMapper.findDiscount");
+            return storeList;
+        }catch (Exception e){
+            e.printStackTrace();
+            List<Store> err = new ArrayList<>();
+            Store s = new Store();
+            s.setErr("err");
+            return err;
+        }
+
+    }
+
 
 }
