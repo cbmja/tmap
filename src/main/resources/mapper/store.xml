@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tmap.tmap.mapper.StoreMapper">
+
+    <insert id="save" parameterType="Store">
+        INSERT INTO store (
+        merchant_num,
+        store_nm,
+        branch_nm,
+        business_category_num,
+        business_category_nm,
+        business_subcategory_num,
+        business_subcategory_nm,
+        business_subsubcategory_num,
+        business_subsubcategory_nm,
+        standard_industry_num,
+        standard_industry_nm,
+        province_num,
+        province_nm,
+        city_num,
+        city_nm,
+        administrative_district_num,
+        administrative_district_nm,
+        legal_district_num,
+        legal_district_nm,
+        lot_num,
+        land_classification_num,
+        land_classification_nm,
+        lot_main_num,
+        lot_sub_num,
+        lot_add,
+        road_name_num,
+        road_nm,
+        building_main_num,
+        building_sub_num,
+        building_management_num,
+        building_nm,
+        road_name_add,
+        old_postal_num,
+        new_postal_num,
+        neighborhood_info,
+        floor_info,
+        unit_info,
+        longitude,
+        latitude
+        ) VALUES (
+        #{merchantNum},
+        #{storeNm},
+        #{branchNm},
+        #{businessCategoryNum},
+        #{businessCategoryNm},
+        #{businessSubcategoryNum},
+        #{businessSubcategoryNm},
+        #{businessSubsubcategoryNum},
+        #{businessSubsubcategoryNm},
+        #{standardIndustryNum},
+        #{standardIndustryNm},
+        #{provinceNum},
+        #{provinceNm},
+        #{cityNum},
+        #{cityNm},
+        #{administrativeDistrictNum},
+        #{administrativeDistrictNm},
+        #{legalDistrictNum},
+        #{legalDistrictNm},
+        #{lotNum},
+        #{landClassificationNum},
+        #{landClassificationNm},
+        #{lotMainNum},
+        #{lotSubNum},
+        #{lotAdd},
+        #{roadNameNum},
+        #{roadNm},
+        #{buildingMainNum},
+        #{buildingSubNum},
+        #{buildingManagementNum},
+        #{buildingNm},
+        #{roadNameAdd},
+        #{oldPostalNum},
+        #{newPostalNum},
+        #{neighborhoodInfo},
+        #{floorInfo},
+        #{unitInfo},
+        #{longitude},
+        #{latitude}
+        )
+    </insert>
+
+    <select id="findAll" resultType="Store">
+        SELECT store_nm, business_category_num, business_category_nm, road_name_add, floor_info, longitude, latitude
+        FROM store;
+    </select>
+
+
+</mapper>

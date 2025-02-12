@@ -241,6 +241,34 @@ function onError(){
     alert("onError");
 }
 
+// 모든 상점 보기
+$(document).on('click', '#view-all-store', function(){
+
+        $.ajax({
+            url: '/tmap/store', // 서버 URL
+            method: 'GET',
+            success: function(response) {
+
+                if(response['res'] == 'err'){
+                    alert('서버 오류입니다.');
+                    return;
+                }
+
+                let list = response['list'];
+
+
+                console.log(list[0]);
+                //console.log(list);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                alert('서버 에러입니다. 잠시 후 다시 시도해주세요.');
+            }
+        });
+
+
+});
+
 
 
 

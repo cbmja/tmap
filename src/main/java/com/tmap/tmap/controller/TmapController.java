@@ -1,7 +1,9 @@
 package com.tmap.tmap.controller;
 
 import com.tmap.tmap.dto.ApUser;
+import com.tmap.tmap.dto.Store;
 import com.tmap.tmap.service.LoginService;
+import com.tmap.tmap.service.StoreService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -18,6 +21,7 @@ import java.util.Map;
 public class TmapController {
 
     private final LoginService loginService;
+    private final StoreService storeService;
 
 
 
@@ -119,6 +123,33 @@ public class TmapController {
         model.addAttribute("destinationAddr" , destinationAddr);
         model.addAttribute("destinationAddrDetail" , destinationAddrDetail);
         model.addAttribute("destinationPostCode" , destinationPostCode);
+    }
+
+    @GetMapping("/store")
+    @ResponseBody
+    public Map<String , Object> getStore(Model model){
+
+            Map<String , Object> res = new HashMap<>();
+        try{
+            List<Store> storeList = storeService.findAll();
+
+            if(res.size() == 1){
+                if(storeList.get(0).getErr().equals("err")){
+                    res.put("res","err");
+                    return res;
+                }
+            }
+
+            res.put("res","success");
+            res.put("list" , storeList);
+            return res;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            res.put("res","err");
+            return res;
+        }
+
     }
 
 
