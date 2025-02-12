@@ -256,6 +256,17 @@ $(document).on('click', '#view-all-store', function(){
 
                 let list = response['list'];
 
+                for(let i = 0; list.length; i++){
+                    if(i === 0){
+                        console.log('for시작');
+                    }
+                    addMarker("store"+i,list[i].latitude, list[i].longitude);
+
+                    if(i === 100){
+                        break;
+                    }
+                }
+
 
                 console.log(list[0]);
                 //console.log(list);
